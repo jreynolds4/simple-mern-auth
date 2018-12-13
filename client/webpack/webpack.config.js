@@ -56,7 +56,7 @@ module.exports = {
         new CleanWebpackPlugin([outputDirectory], {allowExternal: true}),
         new HtmlWebpackPlugin({
             template: '../client/public/index.html',
-            favicon: '../client/public/favicon.ico'
+            favicon: './public/favicon.ico'
         }),
         new WorkboxPlugin.GenerateSW({ clientsClaim: true, skipWaiting: true}),
     ],
