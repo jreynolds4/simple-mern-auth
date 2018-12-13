@@ -1,5 +1,4 @@
 {
   "dbUri": "mongodb://localhost/react_passport",
-  "secret": "BQjJJxYY5uT7SCYKRn4Zu4Ra",
-  "mongoStoreSecret": "BQjJJxYY5uT7SCYKRn4Zu4Ra"
+  "secret": "secret"
 }
