@@ -13,9 +13,6 @@ const User       = require('../models/user');
 const JWTstrategy = require('passport-jwt').Strategy;
 const ExtractJWT = require('passport-jwt').ExtractJwt;
 
-// load the auth variables
-const configAuth = require('../config/auth'); // use this one for testing
-
 module.exports = function(passport) {
 
     passport.serializeUser(function(user, done) {

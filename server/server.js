@@ -14,9 +14,7 @@ require('./passport/passport')(passport); // pass passport for configuration
 const app = express();
 
 
-//app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist'));
-
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -24,7 +22,6 @@ app.use(logger('dev'));
 app.use(passport.initialize());
 
 // routes ======================================================================
-//require('./server/routes/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 require('./routes/user-routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 app.set('port', (process.env.PORT || 8080));

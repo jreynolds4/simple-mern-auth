@@ -16,7 +16,8 @@ module.exports = {
         port: 3000,
         proxy:{
             '/api': "http://localhost:8080"
-        }
+        },
+        historyApiFallback: true,
     },
     devtool: 'inline-source-map',
     module: {
@@ -25,7 +26,7 @@ module.exports = {
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
-            loader: 'babel-loader'
+                loader: 'babel-loader'
             }
         },
         {
@@ -50,7 +51,8 @@ module.exports = {
     output: {
         chunkFilename: '[name].[hash].js',
         filename: '[name].[hash].js',
-        path: path.resolve(__dirname, outputDirectory)
+        path: path.resolve(__dirname, outputDirectory),
+        publicPath: '/'
     },
     plugins: [
         new CleanWebpackPlugin([outputDirectory], {allowExternal: true}),

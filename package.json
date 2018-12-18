@@ -14,10 +14,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
     "bcrypt": "^3.0.2",
     "bcryptjs": "^2.4.3",
     "concurrently": "^4.1.0",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "jsonwebtoken": "^8.4.0",
