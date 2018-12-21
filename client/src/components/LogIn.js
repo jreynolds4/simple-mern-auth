@@ -128,10 +128,6 @@ class LogIn extends React.Component {
                         <InputLabel htmlFor="password">Password</InputLabel>
                         <Input name="password" type="password" id="password" autoComplete="current-password" onChange={this.handleChange} />
                     </FormControl>
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
                     <Button
                         type="submit"
                         fullWidth

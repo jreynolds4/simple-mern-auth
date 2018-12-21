@@ -76,8 +76,7 @@ class SignUp extends React.Component {
         })
         .then(response => {
             console.log(response.data);
-            localStorage.setItem('JWT', response.data.token);
-            this.props.history.push("/");
+            this.props.history.push("/login");
         })
         .catch(error => {
             console.log(error);
@@ -114,10 +113,6 @@ class SignUp extends React.Component {
                         <InputLabel htmlFor="password">Password</InputLabel>
                         <Input name="password" type="password" id="password" autoComplete="current-password" onChange={this.handleChange} />
                     </FormControl>
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
                     <Button
                         type="submit"
                         fullWidth
