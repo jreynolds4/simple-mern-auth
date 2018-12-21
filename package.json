@@ -8,7 +8,8 @@
     "server": "nodemon server/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "build": "cd client && webpack --config webpack/webpack.config.js --mode production",
-    "start": "npm run build && node server.js"
+    "postinstall": "npm run build",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
