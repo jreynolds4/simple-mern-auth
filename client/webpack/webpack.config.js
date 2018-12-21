@@ -8,7 +8,7 @@ const outputDirectory = '../dist';
 
 module.exports = {
     entry: {
-        app: './src/index.js',
+        app: './client/src/index.js',
     },
     devServer: {
         compress: true,
@@ -57,8 +57,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin([outputDirectory], {allowExternal: true}),
         new HtmlWebpackPlugin({
-            template: '../client/public/index.html',
-            favicon: './public/favicon.ico'
+            template: './client/public/index.html',
+            favicon: './client/public/favicon.ico'
         }),
         new WorkboxPlugin.GenerateSW({ clientsClaim: true, skipWaiting: true}),
     ],
