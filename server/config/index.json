@@ -1,4 +1,4 @@
 {
-  "dbUri": "mongodb://localhost/react_passport",
+  "dbUri": "mongodb://${process.env.db_user}:${process.env.db_user}@ds141704.mlab.com:41704/simple-mern-auth-demo",
   "secret": "secret"
 }
