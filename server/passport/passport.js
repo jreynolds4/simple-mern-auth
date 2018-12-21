@@ -49,6 +49,7 @@ module.exports = function(passport) {
                 console.log('PASSWORD: ' + password);
                 console.log('USER: ' + user.local.password);
                 bcrypt.compare(password, user.local.password).then(response => {
+                    console.log(response);
                     if (response !== true) {
                         console.log('passwords do not match');
                         return done(null, false);

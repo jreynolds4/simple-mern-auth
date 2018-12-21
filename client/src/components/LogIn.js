@@ -81,6 +81,10 @@ class LogIn extends React.Component {
         })
         .then(response => {
             console.log(response.data);
+            if(response.data.message === 'user not found'){
+                this.setState({message: 'Email and/or password is invalid!'});
+                return;
+            }
             localStorage.setItem('JWT', response.data.token);
             this.props.history.push("/");
         })

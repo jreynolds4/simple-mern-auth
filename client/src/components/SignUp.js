@@ -68,7 +68,7 @@ class SignUp extends React.Component {
     }
 
     handleSubmit(){
-        event.preventDefault()
+        event.preventDefault();
 
         axios.post('/api/register' , {
             email: this.state.email,

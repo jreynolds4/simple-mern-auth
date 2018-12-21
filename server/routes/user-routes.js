@@ -22,12 +22,10 @@ module.exports = function(app, passport) {
                 res.send(info.message)
             } else {
                 req.logIn(user, err => {
-                    const data = {email: req.body.email, password: req.body.password};
                     User.findOne({ 
                         'local.email': user.email 
                     }).then(user => {
-                        console.log('user created');
-                        res.status(200).send({message: 'user created'});
+                        res.status(201).send({message: 'user created'});
                     });
                 }); 
             }
