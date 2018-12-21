@@ -6,3 +6,5 @@ Simple boilerplate for a React fullstack web application with authentication
 * [Express](https://expressjs.com/)
 * [Passport](http://passportjs.org)
 * [JSON Web Tokens](https://jwt.io/)
+
+See the demo [here](https://simple-mern-auth-demo.herokuapp.com).
