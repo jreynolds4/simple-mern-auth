@@ -7,7 +7,7 @@ const logger = require('morgan');
 const port = process.env.PORT || 8080;
 
 // connect to the database and load models
-require('./models').connect(config.dbUri);
+require('./models').connect(process.env.MONGODB_URI);
 require('./passport/passport')(passport); // pass passport for configuration
 
 
