@@ -1,47 +1,120 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
-import LogIn from './LogIn'
-import SignUp from './SignUp'
-import Home from './Home'
-import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
+import {
+  Route, Switch, withRouter,
+} from 'react-router-dom';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
+import { withStyles, createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import axios from 'axios';
 import NavBar from './NavBar';
+import SimpleTable from './SimpleTable';
 
 
-function PrivateRoute ({component: Component, loggedIn, ...rest}) {
-  return (
-    <Route
-      {...rest}
-      render={(props) => loggedIn === true
-        ? <Component {...props} />
-        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
-    />
-  )
-}
+const styles = theme => ({
+  icon: {
+    marginRight: theme.spacing.unit * 2,
+  },
+  heroUnit: {
+    backgroundColor: theme.palette.background.primary,
+  },
+  heroContent: {
+    maxWidth: 800,
+    margin: '0 auto',
+    padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
+    backgroundColor: theme.palette.background.primary,
+  },
+  heroContentTwo: {
+    maxWidth: 1100,
+    margin: '0 auto',
+    padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
+  },
+  layout: {
+    width: 'auto',
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit * 3,
+    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
+      width: 1100,
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    },
+  },
+});
 
-class App extends Component {  
-  
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#000000',
+    },
+    secondary: {
+      main: '#CC0000',
+    },
+    inherit: {
+      main: '#000000'
+    }
+  },
+});
+
+class Home extends Component { 
+
   constructor(props) {
     super(props);
-    this.isAuthenticated = this.isAuthenticated.bind(this)
+    this.state = {
+      games: [],
+      teams: [],
+      program: [],
+      isLoading: true
+    }
   }
 
-  isAuthenticated(){
-    return localStorage.getItem('JWT') != null;
+  componentDidMount(){
+    axios.get('/api/program/schedule', {
+    }).then(res => {
+      console.log(res.data);
+
+      this.setState({
+        games: res.data.schedule.games,
+        teams: res.data.teams,
+        program: res.data.program,
+        isLoading: false
+      })
+    })
   }
 
   render() {
+
+    const { classes } = this.props;
+    const { games, isLoading, program } = this.state;
+
+    console.log(this.state)
     
+    if(isLoading)
+      return (<div>Loading. . .</div>)
+
     return (
-        <div>
-          <NavBar />
-          <Switch>
-            <PrivateRoute loggedIn={this.isAuthenticated()} exact path='/' component={Home} />
-            <Route exact path="/login" component={LogIn}/>
-            <Route exact path="/signup" component={SignUp}/>
-          </Switch>
+      <div className="Home">
+        <CssBaseline />
+        <NavBar />
+        {/* Hero unit */}
+        <div className={classes.heroUnit}>
+          <MuiThemeProvider theme={theme}>
+            
+            <div className={classes.heroContent}>
+             
+             <SimpleTable games={this.state.games} program={this.state.program} />
+            </div>
+          </MuiThemeProvider>
         </div>
+
+      </div>
     );
   }
 }
 
-export default hot(module)(withRouter(App));
+Home.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default hot(module)(withRouter(withStyles(styles)(Home)));
+

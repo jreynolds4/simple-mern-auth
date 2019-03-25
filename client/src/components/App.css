@@ -1,0 +1,17 @@
+.centeredLogo {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.imgContainer {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+a:link, a:visited {
+  text-decoration: none;
+  color: blue;
+}

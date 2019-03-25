@@ -4,6 +4,7 @@ module.exports = function(api) {
   const plugins = [
       "@babel/plugin-syntax-dynamic-import",
       "react-hot-loader/babel",
+      "@babel/plugin-proposal-class-properties"
   ];
 
   const presets = [
