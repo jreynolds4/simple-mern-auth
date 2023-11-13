@@ -61,7 +61,7 @@
     "url-loader": "^1.1.2",
     "validator": "^10.9.0",
     "webpack": "^4.27.1",
-    "webpack-cli": "^3.1.2",
+    "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^3.1.14",
     "workbox-webpack-plugin": "^3.6.3"
   },
